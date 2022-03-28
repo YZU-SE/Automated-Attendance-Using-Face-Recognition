@@ -32,61 +32,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+     
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         
-      </li>
+      </li> -->
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
         
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
             class="fas fa-th-large"></i></a>
-      </li>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link"   href="{% url 'logout' %}" >Logout <i class="fas fa-sign-out-alt"></i></a>
+      </li> 
+
     </ul>
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="{% static 'dist/img/myeditYZU.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-20"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Face Recognation</span>
-    </a>
-
+    
+   
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -104,22 +88,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="fas fa-home"></i><br>
+        
+         
+         
+          <li class="nav-item">
+            <a href="{%url 'view-attendance-home' %}" class="nav-link">
+              <i class="fas fa-calendar-check"></i>
               <p>
-                Dashboard
+                Attendance Reports
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="fas fa-school"></i><br>
+         
+
+          <li class="nav-item">
+            <a href="{%url 'register' %}" class="nav-link">
+              <i class="fas fa-user-plus"></i>
               <p>
-                Take attendance
+                Register New Student  
+             
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{%url 'add-photos'%}" class="nav-link">
+              <i class="fas fa-record-vinyl"></i>
+              <p>
+                Get Dataset of New Student
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{%url 'train' %}" class="nav-link">
+              <i class="fas fa-road"></i>
+              <p>
+                Train Dataset
+              </p>
+            </a>
+          </li>
+         
           
         </ul>
       </nav>
@@ -131,14 +140,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
+    <div class="content-header" >
+      <div class="container-fluid" >
+        <div class="row mb-2" >
          
           {% block content %}
 
 
-          
+        
           {% endblock content %}
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -165,7 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- To the right -->
   
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> Aut
   </footer>
 </div>
 <!-- ./wrapper -->
