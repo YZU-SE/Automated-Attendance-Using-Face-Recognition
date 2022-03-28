@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Right navbar links -->
           <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#">Login</a>
+              <a class="nav-link" href="{% url 'login2' %}">Login</a>
             </li>
           </ul>
         </div>
@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               <div class="col-md-6 col-sm-6 col-12">
                 <div class="info-box">
-                  <a href="{% url 'layut2' %}" >
+                  <a href='{%url "mark-your-attendance" %}' >
                   <span class="info-box-icon bg-info"
                     >
                     <img src="{% static 'dist/img/camm_on.png' %}">
@@ -100,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               <div class="col-md-6 col-sm-6 col-12">
                 <div class="info-box">
-                  <a href="{% url 'layut2' %}" >
+                  <a href='{%url "mark-your-attendance-out" %}' >
 
                   <span class="info-box-icon bg-info"
                     > 
