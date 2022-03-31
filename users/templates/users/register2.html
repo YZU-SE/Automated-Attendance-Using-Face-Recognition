@@ -1,0 +1,24 @@
+{% extends "recognition/Layout.html" %} 
+{% load crispy_forms_tags %} 
+
+{% block content %}
+
+  <div class="col-sm-12 d-flex align-items-center justify-content-center">
+  <div class="card">
+    <div class="card-body login-card-body">
+      <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Register New Student</legend>
+          {{form| crispy}}
+        </fieldset>
+
+        <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+
+{% endblock content %}

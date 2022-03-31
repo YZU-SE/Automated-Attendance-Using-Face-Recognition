@@ -1,7 +1,4 @@
- 
- 
  {% load static %}
- {% load crispy_forms_tags %}
 
 
 <!DOCTYPE html>
@@ -20,7 +17,8 @@
 </head>
  <body>
 
- 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{%url 'view-attendance-home' %}">Attendance Dashboard</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -46,84 +44,80 @@
 </nav>
 
 
-<div class="container">
-  <div style="width:400px;">
 
- <form method="POST" >
-      {% csrf_token %}
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4"> Select Username And Duration </legend>
-        {{form| crispy}}
-      </fieldset>
 
-      <div class="form-group">
-        <button class="btn btn-outline-info" type="submit"> Submit</button>
-      </div>
-    </form>
+  <div class="card" style="margin-top: 2em; margin-left: 2em; margin-right: 2em; margin-bottom: 2em;">
+    <div class="card-body">
 
-</div>
-
-{%if qs%}
-<table class="table"  style="margin-top: 5em;">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">Date</th>
-        
-        <th scope="col" >Employee</th>
-        <th scope="col">Present</th>
-        <th scope="col">Time in</th>
-        <th scope="col">Time out </th>
-         <th scope="col">Hours </th>
-          <th scope="col"> Break Hours </th>
-    </tr>
-</thead>
-<tbody>
-    {% for item in qs %}
-    <tr> 
-           <td>{{ item.date }}</td>
-        <td>{{ item.user.username}}</td>
-     
-         {% if item.present %}
-        <td> P </td>
-        {% else %}
-        <td> A </td>
-        {% endif %}
-        {% if item.time_in %}
-        <td>{{ item.time_in }}</td>
-       {% else %}
-       <td> - </td>
-       {% endif %}
-         {% if item.time_out %}
-        <td>{{ item.time_out }}</td>
-       {% else %}
-       <td> - </td>
-       {% endif %}
-       <td> {{item.hours}}</td>
-          <td> {{item.break_hours}}</td>
-    </tr>
-    {% endfor %}
-</tbody>
-</table>
-
- <div class="card" style=" margin-top: 5em; margin-bottom: 10em;">
-  <img class="card-img-top" src="{% static 'recognition/img/attendance_graphs/hours_vs_date/1.png'%}" alt="Card image cap">
+ 
+<h2> Today's Statistics </h2>
+ 	<div class="row" style="margin-left: 12em">
+<div class="card" style="width: 20em; background-color: #338044; text-align : center; margin-left: 5em; margin-top: 5em; color: white;">
   <div class="card-body">
-    <p class="card-text" style="text-align: center;">Number of hours worked each day.</p>
+    <h5 class="card-title"> <b>Total Number Of Employees</b></h5>
+    
+    <p class="card-text" style="padding-top: 1em; font-size: 28px;"> <b>{{total_num_of_emp }}</b></p>
+   
+  </div>
+</div>
+<div class="card" style="width: 20em; background-color: #80335b; text-align : center; margin-left: 5em; margin-top: 5em; color: white;">
+  <div class="card-body">
+    <h5 class="card-title"> <b> Employees present today</b></h5>
+    
+    <p class="card-text" style="padding-top: 1em; font-size: 28px;"><b> {{emp_present_today }}</b></p>
+   
   </div>
 </div>
 
-{% endif %}
+</div>
 
-
- {% if messages %}
-      {% for message in messages%}
-      <div class="alert alert-{{message.tags}}" > {{message}}
-      </div>
-      {%endfor %}
-
-    {%endif%}
 
 </div>
+</div>
+ 
+
+
+
+ 
+
+
+
+  <div class="card" style="margin-top: 2em; margin-left: 2em; margin-right: 2em; margin-bottom: 2em;">
+    <div class="card-body">
+
+ 
+
+  <div class="row" >
+<div class="col-md-6">
+<h2> Last Week </h2>
+    <div class="card" style="width: 50em;">
+  <img class="card-img-top" src="{% static 'recognition/img/attendance_graphs/last_week/1.png'%}" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text" style="text-align: center;">Number of employees present each day</p>
+  </div>
+</div>
+
+
+
+
+
+</div>
+<div class="col-md-6">
+  <h2> This Week </h2>
+ <div class="card" style="width: 50em;">
+  <img class="card-img-top" src="{% static 'recognition/img/attendance_graphs/this_week/1.png'%}" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text" style="text-align: center;">Number of employees present each day</p>
+  </div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
 
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -131,8 +125,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
-    
-
  </body>
  </html>
+
+ 

@@ -555,6 +555,18 @@ def dashboard(request):
 
 		return render(request,'recognition/employee_dashboard.html')
 
+
+@login_required
+def dashboard2(request):
+	if(request.user.username=='admin'):
+		print("admin")
+		return render(request, 'recognition/ad_dashboard.html')
+	else:
+		print("not admin")
+
+		return render(request,'recognition/employee_dashboard.html')
+
+
 @login_required
 def add_photos(request):
 	if request.user.username!='admin':

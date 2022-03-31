@@ -1,131 +1,133 @@
- {% load static %}
+{% extends "recognition/Layout.html" %} {% load static %} {% block content %}
 
+<div class="row" style="padding-bottom: 0px; margin-bottom: 0px">
+  <!-- Left col -->
+  <section class="col-lg-12 connectedSortable">
+    <!-- Custom tabs (Charts with tabs)-->
+    <div class="card">
+      <div class="card-tools">
+        <ul class="nav nav-pills ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{%url 'view-attendance-home' %}"
+              >dashboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'view-attendance-employee' %}"
+              >Records by Student</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view-attendance-date' %}"
+              >Records by Date</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
 
-<!DOCTYPE html>
-<html>
-<head>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{total_num_of_emp }}</h3>
 
-	  <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <p>Total Number Of Students</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{emp_present_today }}</h3>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                <p>Students Present Today</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
 
+          <!-- ./col -->
+        </div>
+      </div>
+    </section>
 
-	
-</head>
- <body>
+    <br />
 
+    <div class="row">
+      <!-- Left col -->
+      <section class="col-lg-12 connectedSortable">
+        <!-- Custom tabs (Charts with tabs)-->
+        <div class="card">
+          <div class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  href="#revenue-chart"
+                  data-toggle="tab"
+                  >This Week</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#sales-chart" data-toggle="tab"
+                  >Last Week</a
+                >
+              </li>
+            </ul>
+          </div>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{%url 'view-attendance-home' %}">Attendance Dashboard</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-     
-      <li class="nav-item active">
-        <a class="nav-link" href="{%url 'view-attendance-employee' %}">By Employee</a>
-      </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'view-attendance-date' %}">By Date</a>
-      </li>
-
-
-
-         <li class="nav-item active" style="padding-left: 1440px">
-        <a class="nav-link" href="{% url 'dashboard' %}">Back to Admin Panel</a>
-      </li>
-  
-    </ul>
-  </div>
-</nav>
-
-
-
-
-  <div class="card" style="margin-top: 2em; margin-left: 2em; margin-right: 2em; margin-bottom: 2em;">
-    <div class="card-body">
-
- 
-<h2> Today's Statistics </h2>
- 	<div class="row" style="margin-left: 12em">
-<div class="card" style="width: 20em; background-color: #338044; text-align : center; margin-left: 5em; margin-top: 5em; color: white;">
-  <div class="card-body">
-    <h5 class="card-title"> <b>Total Number Of Employees</b></h5>
-    
-    <p class="card-text" style="padding-top: 1em; font-size: 28px;"> <b>{{total_num_of_emp }}</b></p>
-   
-  </div>
+          <div class="card-body" >
+            <div class="tab-content p-0 d-flex justify-content-center" >
+              <!-- Morris chart - Sales -->
+              
+              <div
+                class="chart tab-pane active"
+                id="revenue-chart"
+                style="position: relative; width:50%; height: auto"
+              >
+              
+                <img
+                  class="card-img-top"
+                  src="{% static 'recognition/img/attendance_graphs/this_week/1.png'%}"
+                  alt="Card image cap"
+                />
+              </div>
+              <div
+                class="chart tab-pane"
+                id="sales-chart"
+                style="position: relative; width:50%;height: auto"
+              >
+                <img
+                  class="card-img-top"
+                  src="{% static 'recognition/img/attendance_graphs/last_week/1.png'%}"
+                  alt="Card image cap"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
 </div>
-<div class="card" style="width: 20em; background-color: #80335b; text-align : center; margin-left: 5em; margin-top: 5em; color: white;">
-  <div class="card-body">
-    <h5 class="card-title"> <b> Employees present today</b></h5>
-    
-    <p class="card-text" style="padding-top: 1em; font-size: 28px;"><b> {{emp_present_today }}</b></p>
-   
-  </div>
-</div>
 
-</div>
-
-
-</div>
-</div>
- 
-
-
-
- 
-
-
-
-  <div class="card" style="margin-top: 2em; margin-left: 2em; margin-right: 2em; margin-bottom: 2em;">
-    <div class="card-body">
-
- 
-
-  <div class="row" >
-<div class="col-md-6">
-<h2> Last Week </h2>
-    <div class="card" style="width: 50em;">
-  <img class="card-img-top" src="{% static 'recognition/img/attendance_graphs/last_week/1.png'%}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text" style="text-align: center;">Number of employees present each day</p>
-  </div>
-</div>
-
-
-
-
-
-</div>
-<div class="col-md-6">
-  <h2> This Week </h2>
- <div class="card" style="width: 50em;">
-  <img class="card-img-top" src="{% static 'recognition/img/attendance_graphs/this_week/1.png'%}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text" style="text-align: center;">Number of employees present each day</p>
-  </div>
-</div>
-
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
- </body>
- </html>
-
- 
+{% endblock content %}

@@ -50,6 +50,22 @@ def register(request):
 		form=UserCreationForm()
 	return render(request,'users/register.html', {'form' : form})
 
+@login_required
+def register2(request):
+	if request.user.username!='admin':
+		return redirect('not-authorised')
+	if request.method=='POST':
+		form=UserCreationForm(request.POST)
+		if form.is_valid():
+			form.save() ###add user to database
+			messages.success(request, f'Employee registered successfully!')
+			return redirect('dashboard')
+		
+
+
+	else:
+		form=UserCreationForm()
+	return render(request,'users/register2.html', {'form' : form})
 
 
 

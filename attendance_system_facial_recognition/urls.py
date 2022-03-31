@@ -24,17 +24,18 @@ urlpatterns = [
     path('', recog_views.home, name='home'),
     path('layout/', recog_views.layout, name='layut'),
     path('layout2/', recog_views.layout2, name='layut2'),
-
-
-
+    path('register/', users_views.register, name='register'),
+    path('register2/', users_views.register2, name='reg2'),
     path('dashboard/', recog_views.dashboard, name='dashboard'),
+    path('dashboard2/', recog_views.dashboard2, name='dashboard2'),
+
     path('train/', recog_views.train, name='train'),
     path('add_photos/', recog_views.add_photos, name='add-photos'),
 
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('login2/', auth_views.LoginView.as_view(template_name='users/login2.html'), name='login2'),
     path('logout/', auth_views.LogoutView.as_view(template_name='recognition/home.html'), name='logout'),
-    path('register/', users_views.register, name='register'),
+    
     path('mark_your_attendance', recog_views.mark_your_attendance,
          name='mark-your-attendance'),
     path('mark_your_attendance_out', recog_views.mark_your_attendance_out,

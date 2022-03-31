@@ -39,26 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        
-      </li> -->
-      <!-- Notifications Dropdown Menu -->
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        
-      </li> -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-            class="fas fa-th-large"></i></a>
-      </li> -->
+    
       <li class="nav-item">
         <a class="nav-link"   href="{% url 'logout' %}" >Logout <i class="fas fa-sign-out-alt"></i></a>
       </li> 
@@ -79,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{% static 'dist/img/YZU2.png' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Yangzhou University</a>
+          <a href="{%url 'layut' %}" class="d-block">Yangzhou University</a>
         </div>
       </div>
 
@@ -102,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
          
 
           <li class="nav-item">
-            <a href="{%url 'register' %}" class="nav-link">
+            <a href="{%url 'reg2' %}" class="nav-link">
               <i class="fas fa-user-plus"></i>
               <p>
                 Register New Student  
@@ -142,14 +123,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <div class="content-header" >
       <div class="container-fluid" >
-        <div class="row mb-2" >
+        <!-- <div class="row mb-2" > -->
          
           {% block content %}
 
-
+THis is the layout page
         
           {% endblock content %}
-        </div><!-- /.row -->
+        <!-- </div> -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -174,7 +155,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- To the right -->
   
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> Aut
+    <p>AUTOMATED STUDENT ATTENDANCE SYSTEM USING FACE RECOGNITION</p>
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -187,5 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE App -->
 <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+
 </body>
 </html>
