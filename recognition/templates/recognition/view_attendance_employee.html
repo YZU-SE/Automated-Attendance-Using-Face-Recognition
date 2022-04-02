@@ -1,49 +1,61 @@
- 
+{% extends "recognition/view_attendance_home.html" %} 
+
+
  
  {% load static %}
  {% load crispy_forms_tags %}
 
+ {% block content %}
 
-<!DOCTYPE html>
-<html>
-<head>
+ <style id = "table_style" type="text/css">
+  body
+  {
+      font-family: Arial;
+      font-size: 10pt;
+  }
+  table
+  {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+  }
+  table th
+  {
+      background-color: #F7F7F7;
+      color: #333;
+      font-weight: bold;
+  }
+  table th, table td
+  {
+      padding: 5px;
+      border: 1px solid #ccc;
+  }
+</style>
 
-	  <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-	
-</head>
- <body>
-
- 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{%url 'view-attendance-home' %}">Attendance Dashboard</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-     
-      <li class="nav-item active">
-        <a class="nav-link" href="{%url 'view-attendance-employee' %}">By Employee</a>
-      </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'view-attendance-date' %}">By Date</a>
-      </li>
-
-
-
-         <li class="nav-item active" style="padding-left: 1440px">
-        <a class="nav-link" href="{% url 'dashboard' %}">Back to Admin Panel</a>
-      </li>
-  
-    </ul>
-  </div>
-</nav>
+ <div class="row" style="padding-bottom: 0px; margin-bottom: 0px">
+  <!-- Left col -->
+  <section class="col-lg-12 connectedSortable">
+    <!-- Custom tabs (Charts with tabs)-->
+    <div class="card">
+      <div class="card-tools">
+        <ul class="nav nav-pills ml-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="{%url 'view-attendance-home' %}"
+              >dashboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{%url 'view-attendance-employee' %}"
+              >Records by Student</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view-attendance-date' %}"
+              >Records by Date</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
 
 
 <div class="container">
@@ -62,14 +74,14 @@
     </form>
 
 </div>
-
+<div id="printing">
 {%if qs%}
-<table class="table"  style="margin-top: 5em;">
+<table class="table "  style="margin-top: 5em;">
     <thead class="thead-dark">
     <tr>
         <th scope="col">Date</th>
         
-        <th scope="col" >Employee</th>
+        <th scope="col" >Student</th>
         <th scope="col">Present</th>
         <th scope="col">Time in</th>
         <th scope="col">Time out </th>
@@ -104,6 +116,8 @@
     {% endfor %}
 </tbody>
 </table>
+</div>
+<input type="button" onclick="PrintTable();" value="Print" />
 
  <div class="card" style=" margin-top: 5em; margin-bottom: 10em;">
   <img class="card-img-top" src="{% static 'recognition/img/attendance_graphs/hours_vs_date/1.png'%}" alt="Card image cap">
@@ -125,14 +139,34 @@
 
 </div>
 
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+<script type="text/javascript">
+  function PrintTable() {
+      var printWindow = window.open('', '', 'height=auto,width=100%');
+      printWindow.document.write('<html><head><title>Table Contents</title>');
 
+      //Print the Table CSS.
+      var table_style = document.getElementById("table_style").innerHTML;
+      printWindow.document.write('<style type = "text/css">');
+      printWindow.document.write(table_style);
+      printWindow.document.write('</style>');
+      printWindow.document.write('</head>');
 
-    
+      //Print the DIV contents ie. the HTML Table.
+      printWindow.document.write('<body>');
+      var divContents = document.getElementById("printing").innerHTML;
+      printWindow.document.write(divContents);
+      printWindow.document.write('</body>');
+
+      printWindow.document.write('</html>');
+      printWindow.document.close();
+      printWindow.print();
+  }
+</script>
 
  </body>
- </html>
+
+</section>
+</div>
+ 
+{% endblock content %}

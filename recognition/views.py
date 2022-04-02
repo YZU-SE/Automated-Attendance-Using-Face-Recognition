@@ -564,7 +564,7 @@ def dashboard2(request):
 	else:
 		print("not admin")
 
-		return render(request,'recognition/employee_dashboard.html')
+		return render(request,'recognition/StudentsLayout.html')
 
 
 @login_required
