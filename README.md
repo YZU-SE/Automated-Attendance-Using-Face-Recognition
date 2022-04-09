@@ -1,1 +1,1 @@
-![Project Logo](https://user-images.githubusercontent.com/48133426/116291303-0a138200-a7b2-11eb-963c-5ead9628ec90.jpg)
+![Project Logo](https://raw.githubusercontent.com/YZU-SE/Automated-Attendance-Using-Face-Recognition/main/design/homepage.png)
