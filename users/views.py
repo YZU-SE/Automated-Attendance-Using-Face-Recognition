@@ -59,7 +59,7 @@ def register2(request):
 		if form.is_valid():
 			form.save() ###add user to database
 			messages.success(request, f'Employee registered successfully!')
-			return redirect('dashboard')
+			return redirect('dashboard2')
 		
 
 

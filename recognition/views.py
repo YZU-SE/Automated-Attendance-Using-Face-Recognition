@@ -581,7 +581,7 @@ def add_photos(request):
 			return redirect('add-photos')
 		else:
 			messages.warning(request, f'No such username found. Please register employee first.')
-			return redirect('dashboard')
+			return redirect('dashboard2')
 
 
 	else:
