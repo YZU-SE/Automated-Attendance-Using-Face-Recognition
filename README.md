@@ -6,6 +6,11 @@ This is my university graduation project. Well, Here I've implemented the face d
 Basically here two main functionality is public what is attendance in and attendace out.
 and then the time of the attendance in and out will be stored in the database.
 
+## Initialization
+ I recomend using a virtual environment, install python 3.8 on that environment .
+  `pip install -r requirements.txt`
+  then 
+  `python manage.py runserver`
 ## UI 💻
 
 **Attendance In:**
