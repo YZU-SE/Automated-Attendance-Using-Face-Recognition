@@ -7,6 +7,7 @@ Basically here two main functionality is public what is attendance in and attend
 and then the time of the attendance in and out will be stored in the database.
 
 ## Initialization
+ Python 3.8.0
  I recomend using a virtual environment, install python 3.8 on that environment .
   `pip install -r requirements.txt`
   then 
