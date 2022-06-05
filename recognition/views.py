@@ -636,8 +636,6 @@ def mark_your_attendance(request):
 		faces = detector(gray_frame,0)
 		
 		
-
-
 		for face in faces:
 			print("INFO : inside for loop")
 			(x,y,w,h) = face_utils.rect_to_bb(face)
